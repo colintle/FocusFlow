@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { db } from './firebase/firebase'
-import { getDocs, collection } from 'firebase/firestore'
+import { getDocs, collection, doc } from 'firebase/firestore'
 
 export default async function Home() {
   console.log("hello")
@@ -10,13 +10,28 @@ export default async function Home() {
     const data = await getDocs(usersCollectionRef);
     const filteredData = data.docs.map((doc) => ({
       ...doc.data(), 
-      id: doc.id,
-
+      id: doc.id
     }));
     console.log(filteredData);
+
+
+    const userID = "JiWoWuVNb5lfnEevInVs";
+    const userDocRef = doc(db, "users", userID);
+    const tasksCollectionRef = collection(userDocRef, "tasks");
+    const tasksData = await getDocs(tasksCollectionRef);
+
+    const tasks = tasksData.docs.map((taskDoc) => ({
+      ...taskDoc.data(),
+      id: taskDoc.id,
+    }));
+
+    console.log(tasks);
   } catch (error) {
     console.log(error)
   }
+
+  
+  
   
   return (
     <div>
