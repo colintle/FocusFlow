@@ -16,7 +16,7 @@ function SignUp() {
     return (
         <div>
             <div>
-               Sign Up
+               Create your Account:
             </div>
             <div>
                 <label htmlFor="signupEmail">Email</label>
