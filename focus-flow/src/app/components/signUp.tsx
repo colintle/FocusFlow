@@ -1,9 +1,9 @@
-function signUp() {
+function SignUp() {
     return (
         <div>
-            Enter
+            SignUp
         </div>
     );
 }
 
-export default signUp;
+export default SignUp;
