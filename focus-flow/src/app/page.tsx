@@ -1,5 +1,7 @@
 import { db } from './firebase/firebase'
 import { getDocs, collection, doc } from 'firebase/firestore'
+import signUp from './components/signUp';
+import login from './components/login';
 
 export default async function LandingPage() {
   console.log("hello")
