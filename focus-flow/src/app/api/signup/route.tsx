@@ -1,10 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { createUserWithEmailAndPassword, AuthError, Auth } from 'firebase/auth';
 import { db, auth } from '@/app/firebase/firebase';
 import { setDoc, doc, collection } from 'firebase/firestore';
+import { NextResponse } from "next/server";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { email, password, firstName, lastName } = req.body;
+export async function POST(request: Request) {
+  const data = await request.json();
+  const { email, password, firstName, lastName } = data;
+  console.log(data);
 
   try {
     // Create a user using the Firebase auth object
@@ -22,9 +24,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       // Other user properties can be added here
     });
 
-    return res.status(201).json({ message: 'User registered successfully' });
+    return NextResponse.json({ message: 'User registered successfully' });
   } catch (error: any) {
-    let errorMessage = 'An error occurred during registration';
+    let errorMessage = 'User registered successfully';
 
     if (error.code) {
       switch (error.code) {
@@ -37,7 +39,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         // Add more cases as needed
       }
     }
-
-    return res.status(400).json({ error: errorMessage });
+    return NextResponse.json({ error: errorMessage });
   }
 };
