@@ -28,7 +28,7 @@ function SignUp() {
                         id="signupFullName"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-3 py-2 border rounded-full"
                     />
                 </div>
                 <div>
@@ -38,7 +38,7 @@ function SignUp() {
                         id="signupEmail"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-3 py-2 border rounded-full"
                     />
                 </div>
                 <div className="relative">
@@ -48,7 +48,7 @@ function SignUp() {
                         id="signupPassword"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-3 py-2 border rounded-full"
                     />
                     {password && (
                         <button
@@ -66,7 +66,7 @@ function SignUp() {
                         id="confirmPassword"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-3 py-2 border rounded-full"
                     />
                     {confirmPassword && (
                         <button
@@ -79,7 +79,7 @@ function SignUp() {
                 </div>
                 <button
                     onClick={handleSignUp}
-                    className="w-full bg-blue-500 text-white p-2 rounded hover-bg-blue-600 cursor-pointer"
+                    className="w-full bg-blue-500 text-white p-2 rounded-full hover-bg-blue-600 cursor-pointer"
                 >
                     Sign Up
                 </button>
@@ -87,21 +87,21 @@ function SignUp() {
             <div className="text-center mt-4">
                 <p>Or sign up with:</p>
                 <div className="flex justify-center space-x-4">
-                    <button className="p-2 rounded-full bg-white hover:bg-gray-200">
+                    <button className="p-2 rounded-full bg-white hover-bg-gray-200">
                         <img
                             src="/google-logo.png"
                             alt="Google"
                             className="w-6 h-6"
                         />
                     </button>
-                    <button className="p-2 rounded-full bg-white hover:bg-gray-200">
+                    <button className="p-2 rounded-full bg-white hover-bg-gray-200">
                         <img
                             src="/facebook-logo.png"
                             alt="Facebook"
                             className="w-6 h-6"
                         />
                     </button>
-                    <button className="p-2 rounded-full bg-white hover:bg-gray-200">
+                    <button className="p-2 rounded-full bg-white hover-bg-gray-200">
                         <img
                             src="/apple-logo.png"
                             alt="Apple"
