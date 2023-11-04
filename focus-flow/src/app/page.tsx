@@ -6,8 +6,8 @@ import Link from 'next/link';
 
 import logo from '../../public/logos/ffLogo_slogan.png';
 import landing from "../../public/landing/landing.png";
-import SignUp from './components/SignUp';
-import Login from './components/Login';
+import SignUp from '@/app/components/SignUp';
+import Login from '@/app/components/Login';
 
 export default function Home() {
   const [isLoginActive, setIsLoginActive] = useState(false);
