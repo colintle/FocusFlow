@@ -4,10 +4,6 @@ import { db, auth } from '@/app/firebase/firebase';
 import { setDoc, doc, collection } from 'firebase/firestore';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== 'POST') {
-    return res.status(405).end(); // Method not allowed
-  }
-
   const { email, password, firstName, lastName } = req.body;
 
   try {
