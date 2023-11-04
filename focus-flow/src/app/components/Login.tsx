@@ -5,7 +5,7 @@ function Login() {
                 Login
             </div>
             <div>
-                Username
+                Username/Email
             </div>
         </div>
     );
