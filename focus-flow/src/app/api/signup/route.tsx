@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ message: 'User registered successfully' });
   } catch (error: any) {
-    let errorMessage = 'User registered successfully';
+    let errorMessage = 'An error occurred during registration';
 
     if (error.code) {
       switch (error.code) {
