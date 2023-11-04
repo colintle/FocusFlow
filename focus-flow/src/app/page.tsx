@@ -1,8 +1,7 @@
-import Image from 'next/image'
 import { db } from './firebase/firebase'
 import { getDocs, collection, doc } from 'firebase/firestore'
 
-export default async function Home() {
+export default async function LandingPage() {
   console.log("hello")
   const usersCollectionRef = collection(db, "users");
 
@@ -13,7 +12,6 @@ export default async function Home() {
       id: doc.id
     }));
     console.log(filteredData);
-
 
     const userID = "JiWoWuVNb5lfnEevInVs";
     const userDocRef = doc(db, "users", userID);
@@ -29,10 +27,6 @@ export default async function Home() {
   } catch (error) {
     console.log(error)
   }
-
-  
-  
-  
   return (
     <div>
       <p>Hi</p>
