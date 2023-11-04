@@ -1,7 +1,7 @@
 function SignUp() {
     return (
         <div>
-            Enter
+            SignUp
         </div>
     );
 }

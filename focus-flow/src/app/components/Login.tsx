@@ -1,7 +1,7 @@
 function Login() {
     return (
         <div>
-            Enter
+            Login
         </div>
     );
 }
