@@ -18,7 +18,7 @@ function SignUp() {
     };
 
     return (
-        <div className="bg-gray-200 p-3 rounded-md shadow-md max-w-md mx-auto">
+        <div className="bg-gray-200 p-2 rounded-md shadow-md max-w-md mx-auto">
             <div className="text-xl text-center mb-4">Create an Account</div>
             <div className="space-y-4">
                 <div>
@@ -53,7 +53,7 @@ function SignUp() {
                     {password && (
                         <button
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute top-1/2 right-4 -translate-y-1/2 text-blue-500"
+                            className="absolute top-1/2 right-4 text-blue-500"
                         >
                             {showPassword ? 'Hide' : 'Show'}
                         </button>
@@ -71,7 +71,7 @@ function SignUp() {
                     {confirmPassword && (
                         <button
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                            className="absolute top-1/2 right-4 -translate-y-1/2 text-blue-500"
+                            className="absolute top-1/2 right-4 text-blue-500"
                         >
                             {showConfirmPassword ? 'Hide' : 'Show'}
                         </button>

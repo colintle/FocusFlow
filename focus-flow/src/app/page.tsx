@@ -13,8 +13,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col md:flex-row h-screen">
-      <div className="w-full md:w-1/2 flex flex-col">
-        <div className="p-8">
+      <div className="w-full md:w-1/2 flex flex-col py-4">
+        <div className="px-8">
           <div className="flex justify-between items-center">
             <Link href="/" passHref>
                 <Image src={logo} alt="Focus Flow Logo" width={200} height={50} />
@@ -24,7 +24,7 @@ export default function Home() {
               {isLoginActive ? "Don't have an account? Sign Up" : "Already have an account? Sign In"}
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center border border-gray-300 p-8 my-4 rounded-lg shadow-md mx-auto max-w-md w-full">
+          <div className="flex flex-col items-center justify-center my-8 rounded-lg mx-auto max-w-xl w-full">
             {isLoginActive ? <Login /> : <SignUp />}
           </div>
         </div>
