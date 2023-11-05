@@ -89,21 +89,21 @@ function SignUp() {
                 <div className="flex justify-center space-x-4">
                     <button className="p-2 rounded-full bg-white hover-bg-gray-200">
                         <img
-                            src="/google-logo.png"
+                            src="/images/google-logo.jpeg"
                             alt="Google"
                             className="w-6 h-6"
                         />
                     </button>
                     <button className="p-2 rounded-full bg-white hover-bg-gray-200">
                         <img
-                            src="/facebook-logo.png"
+                            src="/images/facebook-logo.png"
                             alt="Facebook"
                             className="w-6 h-6"
                         />
                     </button>
                     <button className="p-2 rounded-full bg-white hover-bg-gray-200">
                         <img
-                            src="/apple-logo.png"
+                            src="/images/apple-logo.png"
                             alt="Apple"
                             className="w-6 h-6"
                         />
