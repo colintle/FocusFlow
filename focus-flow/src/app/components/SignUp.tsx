@@ -84,35 +84,6 @@ function SignUp() {
                     Sign Up
                 </button>
             </div>
-            <div className="text-center mt-4">
-                <p>Or sign up with:</p>
-                <div className="flex justify-center space-x-4">
-                    <button className="p-2 rounded-full bg-white hover-bg-gray-200">
-                        <img
-                            src="/images/google-logo.jpeg"
-                            alt="Google"
-                            className="w-6 h-6"
-                        />
-                    </button>
-                    <button className="p-2 rounded-full bg-white hover-bg-gray-200">
-                        <img
-                            src="/images/facebook-logo.png"
-                            alt="Facebook"
-                            className="w-6 h-6"
-                        />
-                    </button>
-                    <button className="p-2 rounded-full bg-white hover-bg-gray-200">
-                        <img
-                            src="/images/apple-logo.png"
-                            alt="Apple"
-                            className="w-6 h-6"
-                        />
-                    </button>
-                </div>
-                <p className="text-gray-600 text-sm mt-4">
-                    By signing up, you agree to our terms & privacy policy.
-                </p>
-            </div>
         </div>
     );
 }
