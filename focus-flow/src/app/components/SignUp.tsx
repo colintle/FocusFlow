@@ -79,7 +79,7 @@ function SignUp() {
                 </div>
                 <button
                     onClick={handleSignUp}
-                    className="w-full bg-blue-500 text-white p-1 rounded-full hover-bg-blue-600 cursor-pointer"
+                    className="w-full bg-orange-300 text-white p-1 rounded-full hover-bg-blue-600 cursor-pointer"
                 >
                     Sign Up
                 </button>
