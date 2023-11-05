@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
+    "@fullcalendar/react": "^6.1.9",
+    "@fullcalendar/resource-timeline": "^6.1.9",
+    "@fullcalendar/timegrid": "^6.1.9",
     "firebase": "^10.5.2",
     "next": "14.0.1",
     "react": "^18",
