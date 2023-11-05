@@ -38,7 +38,7 @@ function Login() {
                     {password && (
                         <button
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute top-1/2 right-4 -translate-y-1/2 text-blue-500"
+                            className="absolute top-1/2 right-4 text-blue-500"
                         >
                             {showPassword ? 'Hide' : 'Show'}
                         </button>
