@@ -9,7 +9,7 @@ function SignUp() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleSignUp = () => {
-        // You can add your sign-up logic here.
+        // Your sign-up logic here.
         // For simplicity, we're just printing the entered full name, email, and passwords.
         console.log('Full Name:', fullName);
         console.log('Email:', email);
@@ -18,37 +18,37 @@ function SignUp() {
     };
 
     return (
-        <div className="bg-gray-200 p-4 rounded-md shadow-md max-w-md mx-auto">
-            <div className="text-2xl text-center mb-4">Create an Account</div>
+        <div className="bg-gray-200 p-3 rounded-md shadow-md max-w-md mx-auto">
+            <div className="text-xl text-center mb-4">Create an Account</div>
             <div className="space-y-4">
                 <div>
-                    <label htmlFor="signupFullName">Full Name</label>
+                    <label htmlFor="signupFullName" className="text-lg">Full Name</label>
                     <input
                         type="text"
                         id="signupFullName"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="w-full px-3 py-2 border rounded-full"
+                        className="w-full px-2 py-1 border rounded-full"
                     />
                 </div>
                 <div>
-                    <label htmlFor="signupEmail">Email</label>
+                    <label htmlFor="signupEmail" className="text-lg">Email</label>
                     <input
                         type="text"
                         id="signupEmail"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3 py-2 border rounded-full"
+                        className="w-full px-2 py-1 border rounded-full"
                     />
                 </div>
                 <div className="relative">
-                    <label htmlFor="signupPassword">Password</label>
+                    <label htmlFor="signupPassword" className="text-lg">Password</label>
                     <input
                         type={showPassword ? 'text' : 'password'}
                         id="signupPassword"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3 py-2 border rounded-full"
+                        className="w-full px-2 py-1 border rounded-full"
                     />
                     {password && (
                         <button
@@ -60,13 +60,13 @@ function SignUp() {
                     )}
                 </div>
                 <div className="relative">
-                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <label htmlFor="confirmPassword" className="text-lg">Confirm Password</label>
                     <input
                         type={showConfirmPassword ? 'text' : 'password'}
                         id="confirmPassword"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full px-3 py-2 border rounded-full"
+                        className="w-full px-2 py-1 border rounded-full"
                     />
                     {confirmPassword && (
                         <button
@@ -79,7 +79,7 @@ function SignUp() {
                 </div>
                 <button
                     onClick={handleSignUp}
-                    className="w-full bg-blue-500 text-white p-2 rounded-full hover-bg-blue-600 cursor-pointer"
+                    className="w-full bg-blue-500 text-white p-1 rounded-full hover-bg-blue-600 cursor-pointer"
                 >
                     Sign Up
                 </button>
@@ -110,7 +110,7 @@ function SignUp() {
                     </button>
                 </div>
                 <p className="text-gray-600 text-sm mt-4">
-                    By signing up you agree to our terms & privacy policy.
+                    By signing up, you agree to our terms & privacy policy.
                 </p>
             </div>
         </div>
