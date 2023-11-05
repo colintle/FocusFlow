@@ -1,9 +1,10 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { db, auth } from '@/app/firebase/firebase';
 import { setDoc, doc, collection } from 'firebase/firestore';
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
+import { cookies } from 'next/headers'
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const data = await request.json();
   const { email, password, firstName, lastName } = data;
   let errorCode = null;
@@ -15,7 +16,6 @@ export async function POST(request: Request) {
     // Signed up
     const user = userCredential.user;
     const id = user.uid;
-    console.log(user.uid);
 
     const userRef = doc(collection(db, 'users'), id);
     await setDoc(userRef, {
@@ -25,11 +25,18 @@ export async function POST(request: Request) {
       // Other user properties can be added here
     });
 
+    cookies().set({
+      name: 'Registration cookie',
+      value: id,
+      httpOnly: true,
+      path: 'https://focusflow3.vercel.app/home' && 'http://localhost:3000/home',
+      maxAge: 3600,
+      secure: true
+    })
 
   } catch (error : any) {
     errorCode = error.code;
     errorMessage = error.message;
-    console.log(errorCode + " message: " + errorMessage);
     return NextResponse.json({ errorCode, errorMessage });
   }
 
