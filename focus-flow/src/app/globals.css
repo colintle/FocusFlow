@@ -10,6 +10,10 @@ textarea::placeholder {
   font-size: 14px;
 }
 
+input:focus::placeholder {
+  color: transparent;
+}
+
 .form-group {
   position: relative;
   min-height: 3.5em;
@@ -24,7 +28,7 @@ label.form-control-label {
 }
 
 .text-xl-header {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    font-weight: bold;
-  }
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: bold;
+}

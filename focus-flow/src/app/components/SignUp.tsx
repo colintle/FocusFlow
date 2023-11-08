@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NextRequest } from 'next/server';
 
 function SignUp() {
     const [fullName, setFullName] = useState('');
@@ -11,7 +12,18 @@ function SignUp() {
     const handleSignUp = () => {
         // Your sign-up logic here.
         // For simplicity, we're just printing the entered full name, email, and passwords.
-        console.log('Full Name:', fullName);
+
+        if (!fullName || !email || !password || !confirmPassword) {
+            alert('Please enter all the fields to register an account.');
+            return;
+        }
+
+        const namePieces = fullName.split(' ');
+        const firstName = namePieces[0];
+        const lastName = namePieces[1];
+
+        console.log('First Name:', firstName);
+        console.log('Last Name:', lastName);
         console.log('Email:', email);
         console.log('Password:', password);
         console.log('Confirm Password:', confirmPassword);

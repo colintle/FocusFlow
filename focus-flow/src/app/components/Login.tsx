@@ -8,6 +8,20 @@ function Login() {
     const handleLogin = () => {
         // Your login logic here.
         // For simplicity, we're just printing the entered email and password.
+
+        if (!email && !password) {
+            alert('Please enter your email and password.');
+            return;
+        }
+        else if (!email) {
+            alert('Please enter your email.');
+            return;
+        }
+        else if (!password && email) {
+            alert('Please enter your password.');
+            return;
+        }
+
         console.log('Email:', email);
         console.log('Password:', password);
     };
