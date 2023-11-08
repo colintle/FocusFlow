@@ -2,3 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+  transform: translate(0, 12px) scale(1);
+  font-size: 14px;
+}
+
+.form-group {
+  position: relative;
+  min-height: 3.5em;
+}
+
+label.form-control-label {
+  position: absolute;
+  font-size: 15px;
+  top: 5px;
+  left: 10px;
+  font-weight:bold;
+}
+
+.text-xl-header {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: bold;
+  }

@@ -18,37 +18,40 @@ function SignUp() {
     };
 
     return (
-        <div className="bg-gray-200 p-2 rounded-md shadow-md max-w-md mx-auto">
-            <div className="text-xl text-center mb-4">Create an Account</div>
+        <div className="bg-white-200 p-3 rounded-md max-w-md mx-auto">
+            <div className="text-xl-header text-center mb-4">Create an account</div>
             <div className="space-y-4">
-                <div>
-                    <label htmlFor="signupFullName" className="text-lg">Full Name</label>
+                <div className="form-group">
+                    <label htmlFor="signupFullName" className="form-control-label">Full Name</label>
                     <input
                         type="text"
+                        placeholder='John Doe'
                         id="signupFullName"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="w-full px-2 py-1 border rounded-full"
+                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                 </div>
-                <div>
-                    <label htmlFor="signupEmail" className="text-lg">Email</label>
+                <div className="form-group">
+                    <label htmlFor="signupEmail" className="form-control-label">Email</label>
                     <input
                         type="text"
+                        placeholder='example.email@gmail.com'
                         id="signupEmail"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-2 py-1 border rounded-full"
+                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                 </div>
-                <div className="relative">
-                    <label htmlFor="signupPassword" className="text-lg">Password</label>
+                <div className="form-group">
+                    <label htmlFor="signupPassword" className="form-control-label">Password</label>
                     <input
                         type={showPassword ? 'text' : 'password'}
+                        placeholder='Enter at least 8+ characters'
                         id="signupPassword"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-2 py-1 border rounded-full"
+                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                     {password && (
                         <button
@@ -59,14 +62,15 @@ function SignUp() {
                         </button>
                     )}
                 </div>
-                <div className="relative">
-                    <label htmlFor="confirmPassword" className="text-lg">Confirm Password</label>
+                <div className="form-group">
+                    <label htmlFor="confirmPassword" className="form-control-label">Confirm Password</label>
                     <input
                         type={showConfirmPassword ? 'text' : 'password'}
+                        placeholder='Enter at least 8+ characters'
                         id="confirmPassword"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full px-2 py-1 border rounded-full"
+                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                     {confirmPassword && (
                         <button
@@ -79,7 +83,7 @@ function SignUp() {
                 </div>
                 <button
                     onClick={handleSignUp}
-                    className="w-full bg-orange-300 text-white p-1 rounded-full hover-bg-blue-600 cursor-pointer"
+                    className="w-full bg-orange-300 text-white p-1 rounded-md hover-bg-blue-600 cursor-pointer"
                 >
                     Sign Up
                 </button>

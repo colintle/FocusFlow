@@ -13,27 +13,29 @@ function Login() {
     };
 
     return (
-        <div className="bg-gray-200 p-3 rounded-md shadow-md max-w-md mx-auto">
-            <div className="text-xl text-center mb-4">Welcome Back!</div>
+        <div className="bg-white-200 p-3 rounded-md max-w-md mx-auto">
+            <div className="text-xl-header text-center mb-4">Welcome Back!</div>
             <div className="space-y-4">
-                <div>
-                    <label htmlFor="loginEmail" className="text-lg">Email</label>
+                <div className="form-group">
+                    <label htmlFor="loginEmail" className="form-control-label">Email</label>
                     <input
                         type="text"
+                        placeholder='example.email@gmail.com'
                         id="loginEmail"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-2 py-1 border rounded-full"
+                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                 </div>
-                <div className="relative">
-                    <label htmlFor="loginPassword" className="text-lg">Password</label>
+                <div className="form-group">
+                    <label htmlFor="loginPassword" className="form-control-label">Password</label>
                     <input
                         type={showPassword ? 'text' : 'password'}
+                        placeholder='Enter at least 8+ characters'
                         id="loginPassword"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-2 py-1 border rounded-full"
+                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                     {password && (
                         <button
@@ -46,7 +48,7 @@ function Login() {
                 </div>
                 <button
                     onClick={handleLogin}
-                    className="w-full bg-orange-300 text-white p-1 rounded-full hover-bg-blue-600 cursor-pointer"
+                    className="w-full bg-orange-300 text-white p-1 rounded-md hover-bg-blue-600 cursor-pointer"
                 >
                     Login
                 </button>
