@@ -26,10 +26,10 @@ function Login() {
 
     return (
         <div className="bg-white-200 p-3 rounded-md max-w-md mx-auto">
-            <div className="text-xl font-bold text-center mb-4">Welcome Back!</div>
+            <div className="text-xl font-bold leading-7 font-bold text-center mb-4">Welcome Back!</div>
             <div className="space-y-4">
-                <div className="form-group">
-                    <label htmlFor="loginEmail" className="form-control-label">Email</label>
+                <div className="relative min-h-[3.5em]">
+                    <label htmlFor="loginEmail" className="absolute text-sm font-bold top-1 left-2.5">Email</label>
                     <input
                         type="text"
                         placeholder='example.email@gmail.com'
@@ -39,8 +39,8 @@ function Login() {
                         className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="loginPassword" className="form-control-label">Password</label>
+                <div className="relative min-h-[3.5em]">
+                    <label htmlFor="loginPassword" className="absolute text-sm font-bold top-1 left-2.5">Password</label>
                     <input
                         type={showPassword ? 'text' : 'password'}
                         placeholder='Enter at least 8+ characters'
@@ -52,7 +52,7 @@ function Login() {
                     {password && (
                         <button
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute top-1/2 right-4 text-blue-500"
+                            className="absolute top-1/4 right-4 text-blue-500"
                         >
                             {showPassword ? 'Hide' : 'Show'}
                         </button>

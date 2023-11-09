@@ -29,10 +29,10 @@ function SignUp() {
 
     return (
         <div className="bg-white-200 p-3 rounded-md max-w-md mx-auto">
-            <div className="text-xl font-bold text-center mb-4">Create an account</div>
+            <div className="text-xl font-bold leading-7 font-bold text-center mb-4">Create an account</div>
             <div className="space-y-4">
-                <div className="form-group">
-                    <label htmlFor="signupFullName" className="form-control-label">Full Name</label>
+                <div className="relative min-h-[3.5em]">
+                    <label htmlFor="signupFullName" className="absolute text-sm font-bold top-1 left-2.5">Full Name</label>
                     <input
                         type="text"
                         placeholder='John Doe'
@@ -42,8 +42,8 @@ function SignUp() {
                         className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="signupEmail" className="form-control-label">Email</label>
+                <div className="relative min-h-[3.5em]">
+                    <label htmlFor="signupEmail" className="absolute text-sm font-bold top-1 left-2.5">Email</label>
                     <input
                         type="text"
                         placeholder='example.email@gmail.com'
@@ -53,8 +53,8 @@ function SignUp() {
                         className="bg-gray-200 w-full px-2 py-4 border rounded-md"
                     />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="signupPassword" className="form-control-label">Password</label>
+                <div className="relative min-h-[3.5em]">
+                    <label htmlFor="signupPassword" className="absolute text-sm font-bold top-1 left-2.5">Password</label>
                     <input
                         type={showPassword ? 'text' : 'password'}
                         placeholder='Enter at least 8+ characters'
@@ -66,14 +66,14 @@ function SignUp() {
                     {password && (
                         <button
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute top-1/2 right-4 text-blue-500"
+                            className="absolute top-1/4 right-4 text-blue-500"
                         >
                             {showPassword ? 'Hide' : 'Show'}
                         </button>
                     )}
                 </div>
-                <div className="form-group">
-                    <label htmlFor="confirmPassword" className="form-control-label">Confirm Password</label>
+                <div className="relative min-h-[3.5em]">
+                    <label htmlFor="confirmPassword" className="absolute text-sm font-bold top-1 left-2.5">Confirm Password</label>
                     <input
                         type={showConfirmPassword ? 'text' : 'password'}
                         placeholder='Enter at least 8+ characters'
@@ -85,7 +85,7 @@ function SignUp() {
                     {confirmPassword && (
                         <button
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                            className="absolute top-1/2 right-4 text-blue-500"
+                            className="absolute top-1/4 right-4 text-blue-500"
                         >
                             {showConfirmPassword ? 'Hide' : 'Show'}
                         </button>
