@@ -12,12 +12,10 @@ function Login() {
         if (!email && !password) {
             alert('Please enter your email and password.');
             return;
-        }
-        else if (!email) {
+        } else if (!email) {
             alert('Please enter your email.');
             return;
-        }
-        else if (!password && email) {
+        } else if (!password && email) {
             alert('Please enter your password.');
             return;
         }
@@ -28,7 +26,7 @@ function Login() {
 
     return (
         <div className="bg-white-200 p-3 rounded-md max-w-md mx-auto">
-            <div className="text-xl-header text-center mb-4">Welcome Back!</div>
+            <div className="text-xl font-bold text-center mb-4">Welcome Back!</div>
             <div className="space-y-4">
                 <div className="form-group">
                     <label htmlFor="loginEmail" className="form-control-label">Email</label>
@@ -62,7 +60,7 @@ function Login() {
                 </div>
                 <button
                     onClick={handleLogin}
-                    className="w-full bg-orange-300 text-white p-1 rounded-md hover-bg-blue-600 cursor-pointer"
+                    className="w-full bg-orange-300 text-white p-2 rounded-md hover:bg-blue-600 cursor-pointer"
                 >
                     Login
                 </button>

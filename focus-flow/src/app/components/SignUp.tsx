@@ -10,8 +10,6 @@ function SignUp() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleSignUp = () => {
-        // Your sign-up logic here.
-        // For simplicity, we're just printing the entered full name, email, and passwords.
 
         if (!fullName || !email || !password || !confirmPassword) {
             alert('Please enter all the fields to register an account.');
@@ -31,7 +29,7 @@ function SignUp() {
 
     return (
         <div className="bg-white-200 p-3 rounded-md max-w-md mx-auto">
-            <div className="text-xl-header text-center mb-4">Create an account</div>
+            <div className="text-xl font-bold text-center mb-4">Create an account</div>
             <div className="space-y-4">
                 <div className="form-group">
                     <label htmlFor="signupFullName" className="form-control-label">Full Name</label>
@@ -95,7 +93,7 @@ function SignUp() {
                 </div>
                 <button
                     onClick={handleSignUp}
-                    className="w-full bg-orange-300 text-white p-1 rounded-md hover-bg-blue-600 cursor-pointer"
+                    className="w-full bg-orange-300 text-white p-2 rounded-md hover:bg-blue-600 cursor-pointer"
                 >
                     Sign Up
                 </button>
