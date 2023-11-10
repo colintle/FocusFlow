@@ -9,7 +9,6 @@ export async function POST(request: NextRequest) {
   const { email, password, firstName, lastName } = data;
   let errorCode = null;
   let errorMessage = null;
-
   try {
     // Create a user using the Firebase auth object
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -40,5 +39,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ errorCode, errorMessage });
   }
 
-  return NextResponse.json('Registration Successful');
+  return NextResponse.json({message: 'Registration Successful'});
 }

@@ -14,8 +14,6 @@ export async function POST(request: NextRequest) {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
     const user = userCredential.user;
-    await sendEmailVerification(user);
-    
     if (user.emailVerified) {
       // The user is logged in only if their email is verified
       const id = user.uid;
@@ -31,7 +29,8 @@ export async function POST(request: NextRequest) {
       
       return NextResponse.json('Login Successful');
     } else {
-      return NextResponse.json('Please verify your email before logging in.');
+      await sendEmailVerification(user);
+      return NextResponse.json({errorCode: 50, errorMesage:'Please verify your email before logging in.'});
     }
   } catch (error: any) {
     errorCode = error.code;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { NextRequest } from 'next/server';
 
 function SignUp() {
@@ -9,7 +9,7 @@ function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    const handleSignUp = () => {
+    async function handleSignUp(){
         // Your sign-up logic here.
         // For simplicity, we're just printing the entered full name, email, and passwords.
 
@@ -18,15 +18,44 @@ function SignUp() {
             return;
         }
 
-        const namePieces = fullName.split(' ');
-        const firstName = namePieces[0];
-        const lastName = namePieces[1];
+        if (password != confirmPassword) {
+            alert('The password fields do not match.');
+            return;
+        }
 
-        console.log('First Name:', firstName);
-        console.log('Last Name:', lastName);
+        const namePieces = fullName.split(' ');
+
+        console.log('Full Name:', fullName);
         console.log('Email:', email);
         console.log('Password:', password);
         console.log('Confirm Password:', confirmPassword);
+
+        const firstName = namePieces[0];
+        const lastName = namePieces[1];
+
+        const res = await fetch('api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify({email, password, firstName, lastName}),
+        })
+
+        const out = await res.json()
+
+        if (!out.errorCode) {
+            console.log(out);
+            alert("Account created.");
+        }
+        else if(out.errorCode == "auth/weak-password") {
+            alert("Your password needs to be at least 8 characters in length.");
+        }
+        else if(out.errorCode == "auth/email-already-in-use") {
+            alert("Account with email '" + email + "' already exists. Please sign in.");
+        }
+        else {
+            alert("Error: " + out.errorMessage);
+        }
     };
 
     return (
