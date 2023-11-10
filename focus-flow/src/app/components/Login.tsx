@@ -42,6 +42,9 @@ function Login() {
         else if (out.errorCode == "auth/too-many-requests") {
             alert("Too many log in requests. Please try again in a moment.");
         }
+        else if (out.errorCode == "auth/invalid-login-credentials") {
+            alert("Incorrect password.");
+        }
         else {
             console.log(out.errorCode);
             alert("Error: " + out.errorMesage);
