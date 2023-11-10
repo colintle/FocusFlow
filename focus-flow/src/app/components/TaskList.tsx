@@ -16,9 +16,9 @@ function TaskList() {
                 <Slider/>
                 <div className="bg-gray-150 mt-8 space-y-4 overflow-y-scroll max-h-[calc(100vh-18rem)] ">
                     {
-                        tasks.map((task) => (
+                        tasks.map((task, index) => (
                             // In the future, pass in props for the task
-                            <Task/>
+                            <Task key={index}/>
                         ))
                     }
                 </div>
