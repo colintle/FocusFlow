@@ -1,7 +1,7 @@
 function Calendar() {
     return (
-        <div>
-            Calendar
+        <div className="w-full lg:w-3/4 border-red-100 border-2">
+            Calendar    
         </div>
     )
 }
