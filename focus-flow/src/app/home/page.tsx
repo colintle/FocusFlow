@@ -9,7 +9,7 @@ function HomePage() {
   return (
     <div className="container mx-auto h-screen px-2">
       <Header/>
-      <div className="flex flex-col lg:flex-row h-[90%]">
+      <div className="flex flex-col min-h-fit lg:flex-row lg:h-[90%]">
         <Calendar/>
         <TaskList/>
       </div>
