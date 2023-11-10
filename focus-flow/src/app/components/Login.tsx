@@ -5,7 +5,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleLogin = () => {
+    async function handleLogin(){
         // Your login logic here.
         // For simplicity, we're just printing the entered email and password.
 
@@ -22,6 +22,33 @@ function Login() {
 
         console.log('Email:', email);
         console.log('Password:', password);
+
+        const res = await fetch('api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify({email, password}),
+        })
+
+        const out = await res.json()
+    
+        if (!out.errorCode) {
+            alert("Logged in.");
+        }
+        else if (out.errorCode == 50) {
+            alert("Please verify your email before logging in.");
+        }
+        else if (out.errorCode == "auth/too-many-requests") {
+            alert("Too many log in requests. Please try again in a moment.");
+        }
+        else if (out.errorCode == "auth/invalid-login-credentials") {
+            alert("Incorrect password.");
+        }
+        else {
+            console.log(out.errorCode);
+            alert("Error: " + out.errorMesage);
+        }
     };
 
     return (

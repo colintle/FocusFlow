@@ -24,14 +24,15 @@ export async function POST(request: NextRequest) {
         name: 'Login cookie',
         value: id,
         httpOnly: true,
-        path: 'https://focusflow3.vercel.app/home' && 'http://localhost:3000/home',
+        path: 'https://focusflow3.vercel.app/home' && 'http://localhost:3000/home' && 'https://focusflow3.vercel.app/' && 'http://localhost:3000/',
         maxAge: 3600,
         secure: true
       });
       
       return NextResponse.json('Login Successful');
     } else {
-      return NextResponse.json('Please verify your email before logging in.');
+      await sendEmailVerification(user);
+      return NextResponse.json({errorCode: 50, errorMesage:'Please verify your email before logging in.'});
     }
   } catch (error: any) {
     errorCode = error.code;
