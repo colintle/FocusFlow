@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     });
 
     cookies().set({
-      name: 'Registration cookie',
+      name: 'User Cookie',
       value: id,
       httpOnly: true,
       path: 'https://focusflow3.vercel.app/home' && 'http://localhost:3000/home' && 'https://focusflow3.vercel.app/' && 'http://localhost:3000/',
@@ -34,9 +34,9 @@ export async function POST(request: NextRequest) {
     })
 
   } catch (error : any) {
-    errorCode = error.code;
-    errorMessage = error.message;
-    return NextResponse.json({ errorCode, errorMessage });
+      errorCode = error.code;
+      errorMessage = error.message;
+      return NextResponse.json({ errorCode, errorMessage });
   }
 
   return NextResponse.json({message: 'Registration Successful'});
