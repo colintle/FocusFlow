@@ -25,7 +25,7 @@ function Login() {
     };
 
     return (
-        <div className="bg-white-200 p-3 rounded-md max-w-md mx-auto">
+        <div className="bg-white-200 p-3 rounded-md w-5/6 mx-auto">
             <div className="text-xl font-bold leading-7 font-bold text-center mb-4">Welcome Back!</div>
             <div className="space-y-4">
                 <div className="relative min-h-[3.5em]">
@@ -36,7 +36,7 @@ function Login() {
                         id="loginEmail"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
+                        className="bg-gray-200 w-full px-2 py-5 text-xs border rounded-md"
                     />
                 </div>
                 <div className="relative min-h-[3.5em]">
@@ -47,7 +47,7 @@ function Login() {
                         id="loginPassword"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
+                        className="bg-gray-200 w-full px-2 py-5 text-xs border rounded-md"
                     />
                     {password && (
                         <button

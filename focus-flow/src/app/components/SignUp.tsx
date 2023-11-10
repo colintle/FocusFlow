@@ -28,7 +28,7 @@ function SignUp() {
     };
 
     return (
-        <div className="bg-white-200 p-3 rounded-md max-w-md mx-auto">
+        <div className="bg-white-200 p-3 rounded-md w-5/6 mx-auto">
             <div className="text-xl font-bold leading-7 font-bold text-center mb-4">Create an account</div>
             <div className="space-y-4">
                 <div className="relative min-h-[3.5em]">
@@ -39,7 +39,7 @@ function SignUp() {
                         id="signupFullName"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
+                        className="bg-gray-200 w-full px-2 py-5 text-xs border rounded-md placeholder:text-xs"
                     />
                 </div>
                 <div className="relative min-h-[3.5em]">
@@ -50,7 +50,7 @@ function SignUp() {
                         id="signupEmail"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
+                        className="bg-gray-200 w-full px-2 py-5 text-xs border rounded-md"
                     />
                 </div>
                 <div className="relative min-h-[3.5em]">
@@ -61,7 +61,7 @@ function SignUp() {
                         id="signupPassword"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
+                        className="bg-gray-200 w-full px-2 py-5 border rounded-md text-xs"
                     />
                     {password && (
                         <button
@@ -80,7 +80,7 @@ function SignUp() {
                         id="confirmPassword"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="bg-gray-200 w-full px-2 py-4 border rounded-md"
+                        className="bg-gray-200 w-full px-2 py-5 border rounded-md text-xs"
                     />
                     {confirmPassword && (
                         <button
