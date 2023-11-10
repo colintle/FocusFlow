@@ -6,7 +6,7 @@ import logo from '../../../public/logos/ffLogo_slogan.png';
 const Header = () => {
   return (
     <header className="w-full">
-      <div className="flex items-center justify-between max-w-6xl mx-auto p-2">
+      <div className="flex items-center justify-between w-full mx-auto py-2">
         <div className="flex items-center">
           <Image src={logo} alt="Focus Flow Logo" width={150} height={25} />
         </div>

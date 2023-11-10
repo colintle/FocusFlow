@@ -7,9 +7,9 @@ import Header from '../components/Header';
 
 function HomePage() {
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto h-screen px-2">
       <Header/>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col min-h-fit lg:flex-row lg:h-[90%]">
         <Calendar/>
         <TaskList/>
       </div>
