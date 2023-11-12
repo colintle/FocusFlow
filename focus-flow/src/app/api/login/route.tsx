@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
     const user = userCredential.user;
-    await sendEmailVerification(user);
     
     if (user.emailVerified) {
       // The user is logged in only if their email is verified
