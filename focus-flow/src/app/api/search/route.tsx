@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   const userId = idCookie!.value;
 
   const data = await request.json();
-  const { searchQuery } = data; // Assuming your request contains a 'searchQuery' property
+  const { searchQuery } = data;
   let errorCode = null;
   let errorMessage = null;
 
