@@ -24,15 +24,6 @@ export async function POST(request: NextRequest) {
       // Other user properties can be added here
     });
 
-    cookies().set({
-      name: 'User Cookie',
-      value: id,
-      httpOnly: true,
-      path: 'https://focusflow3.vercel.app/home' && 'http://localhost:3000/home' && 'https://focusflow3.vercel.app/' && 'http://localhost:3000/',
-      maxAge: 3600,
-      secure: true
-    })
-
   } catch (error : any) {
       errorCode = error.code;
       errorMessage = error.message;
