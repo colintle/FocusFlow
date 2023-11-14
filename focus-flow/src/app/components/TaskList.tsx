@@ -10,7 +10,7 @@ import Slider from "./Slider";
 function TaskList() {
     const [tasks, setTasks] = useState(["dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData", "dummyData"])
     return (
-        <div className="relative w-full lg:w-1/4 bg-gray-100 border-blue-100 border-2 h-full">
+        <div className="relative w-full lg:w-1/5 bg-gray-100 border-blue-100 border-2 h-full">
             <div>
                 <SearchBar/>
                 <Slider/>
