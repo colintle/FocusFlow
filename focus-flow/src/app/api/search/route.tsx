@@ -24,8 +24,6 @@ export async function POST(request: NextRequest) {
         ...doc.data(),
       }));
 
-      console.log('Matching tasks: ', matchingTasks);
-
       return NextResponse.json({ matchingTasks });
   } catch (error: any) {
     errorCode = error.code;
