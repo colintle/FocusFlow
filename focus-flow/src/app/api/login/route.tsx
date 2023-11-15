@@ -20,10 +20,10 @@ export async function POST(request: NextRequest) {
       const id = user.uid;
 
       cookies().set({
-        name: 'User Cookie',
+        name: 'Real User Cookie',
         value: id,
         httpOnly: true,
-        path: 'https://focusflow3.vercel.app/home' && 'http://localhost:3000/home' && 'https://focusflow3.vercel.app/' && 'http://localhost:3000/',
+        path: 'home',
         maxAge: 3600,
         secure: true
       });

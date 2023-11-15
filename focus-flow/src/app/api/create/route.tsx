@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const idCookie = cookieStore.get('User Cookie')
     const id = idCookie!.value;
 
-    const data = await request.json() ;
+    const data = await request.json();
     const { title, description, due, status } = data;
     let errorCode = null;
     let errorMessage = null;

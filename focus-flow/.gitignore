@@ -34,3 +34,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+focusflow-6cd39-firebase-adminsdk-xb2nc-a6bdacf1d9.json
