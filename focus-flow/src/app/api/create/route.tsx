@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     const id = idCookie!.value;
 
     const data = await request.json() ;
-    const { title, description, duedate, category } = data;
+    const { title, description, due, status } = data;
     let errorCode = null;
     let errorMessage = null;
 
@@ -18,8 +18,8 @@ export async function POST(request: NextRequest) {
         await setDoc(taskRef, {
             title,
             description, 
-            duedate, 
-            category
+            due, 
+            status
             // Other properties can be added here
           });
 
