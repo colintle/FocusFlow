@@ -1,22 +1,21 @@
 'use client' 
 import React, { useState } from 'react';
-import Popup from './Popup'; 
+import Popup from './Popup';
 import { AiOutlinePlus } from 'react-icons/ai';
 import SearchBar from './SearchBar';
 import Task from './Task';
 import Slider from './Slider';
+import image from '../../../public/images/circle-with-i-1.png';
 
 function TaskList() {
-  // State for managing tasks and the popup
   const [tasks, setTasks] = useState(["dummyData", /* ... */]);
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [descriptionText, setDescriptionText] = useState("Input text"); // State for description text
 
-  // Event handler for opening the popup
   const handleOpenPopup = () => {
     setPopupOpen(true);
   };
 
-  // Event handler for closing the popup
   const handleClosePopup = () => {
     setPopupOpen(false);
   };
@@ -31,7 +30,6 @@ function TaskList() {
             <Task key={index} />
           ))}
         </div>
-        {/* This is the create button */}
         <button
           className="mt-2 lg:mt-0 lg:absolute lg:bottom-0 text-orange-800 flex items-center justify-center bg-orange-300 hover:bg-orange-400 py-2 w-full h-14"
           onClick={handleOpenPopup}
@@ -41,14 +39,53 @@ function TaskList() {
         </button>
       </div>
 
-      {/* Conditionally render the Popup component */}
       {isPopupOpen && (
         <Popup
           title="Task title"
           onClose={handleClosePopup}
         >
-          {/* Content of the popup goes here */}
-          <p>This is where you can create a new task.</p>
+          <div className="flex items-center">
+            <img
+              src={image.src}
+              alt="Image Description"
+              className="mr-4 w-5 h-5 rounded-full mb-20"
+            />
+            <div className="text-left ml-2">
+              <p className="font-bold mb-4 mt-2">General Info</p>
+              <div className="flex">
+                <div className="mr-4">
+                  <select className="border rounded-md p-1 w-32">
+                    <option disabled selected hidden>Status</option>
+                    <option value="todo">To Do</option>
+                    <option value="done">Done</option>
+                  </select>
+                </div>
+                <div className="mr-4">
+                  <select className="border rounded-md p-1 w-32">
+                    <option disabled selected hidden>Priority</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="difficult">Difficult</option>
+                  </select>
+                </div>
+                <div>
+                  <select className="border rounded-md p-1 w-40">
+                    <option disabled selected hidden>MM/DD/YYYY</option>
+                    {/* Add your options for Due Date here */}
+                  </select>
+                </div>
+              </div>
+
+              <p className="font-bold mb-8 mt-8">Description</p>
+              <input
+                type="text"
+                className="border rounded-md p-1 w-full"
+                value={descriptionText}
+                onChange={(e) => setDescriptionText(e.target.value)}
+                onClick={() => setDescriptionText("")} // Clear default text on click
+              />
+            </div>
+          </div>
         </Popup>
       )}
     </div>
