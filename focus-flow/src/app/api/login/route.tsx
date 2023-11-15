@@ -14,14 +14,13 @@ export async function POST(request: NextRequest) {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
     const user = userCredential.user;
-    await sendEmailVerification(user);
     
     if (user.emailVerified) {
       // The user is logged in only if their email is verified
       const id = user.uid;
 
       cookies().set({
-        name: 'Login cookie',
+        name: 'User Cookie',
         value: id,
         httpOnly: true,
         path: 'https://focusflow3.vercel.app/home' && 'http://localhost:3000/home' && 'https://focusflow3.vercel.app/' && 'http://localhost:3000/',
