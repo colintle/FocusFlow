@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fc-toolbar-chunk .fc-button-group button:hover {
+    background-color: #ea580c;
+}
+
+
+.fc-toolbar-chunk .fc-button-group button{
+    background-color:#f97316
+}
+
+.fc-event-title-container{
+    background-color:#f97316
+}
+
