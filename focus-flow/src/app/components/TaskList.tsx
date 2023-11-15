@@ -57,7 +57,8 @@ function TaskList() {
                   <select className="border rounded-md p-1 w-32">
                     <option disabled selected hidden>Status</option>
                     <option value="todo">To Do</option>
-                    <option value="done">Done</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="completed">Completed</option>
                   </select>
                 </div>
                 <div className="mr-4">
