@@ -1,12 +1,15 @@
 import { useState } from 'react';
 
-function Slider() {
-    const [activeTab, setActiveTab] = useState('todo');
+interface Slider{
+    status: string,
+    setStatus: (value: string | ((prevVar: string) => string)) => void,
+}
 
+function Slider({status, setStatus}: Slider) {
     const tabs = [
-        { name: 'todo', label: 'TO DO' },
-        { name: 'in progress', label: 'IN PROGRESS' },
-        { name: 'completed', label: 'COMPLETED' },
+        { name: 'To Do', label: 'TO DO' },
+        { name: 'In Progress', label: 'IN PROGRESS' },
+        { name: 'Completed', label: 'COMPLETED' },
       ];
 
 
@@ -16,11 +19,11 @@ function Slider() {
             <button
                 key={tab.name}
                 className={`text-xs whitespace-nowrap
-                            ${activeTab === tab.name
+                            ${status === tab.name
                             ? 'border-b-4 border-orange-500 text-orange-600'
                             : 'text-gray-600 hover:text-orange-500 hover:border-orange-500'
                             }`}
-                onClick={() => setActiveTab(tab.name)}
+                onClick={() => setStatus(tab.name)}
             >
                 {tab.label}
             </button>

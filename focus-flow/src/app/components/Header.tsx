@@ -26,8 +26,8 @@ const Header = () => {
         </div>
       </div>
       {isPopupOpen && (
-          <Popup title="My Popup" onClose={handleClose}>
-            <p>This is the content of the popup. asdfasdf asdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
+          <Popup title="Logout" onClose={handleClose}>
+            <p>Logout Information</p>
             {/* You can include any other components or HTML elements here as needed */}
           </Popup>
         )}

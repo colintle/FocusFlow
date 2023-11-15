@@ -7,8 +7,14 @@ import Task from './Task';
 import Slider from './Slider';
 import image from '../../../public/images/circle-with-i-1.png';
 
-function TaskList() {
-  const [tasks, setTasks] = useState(["dummyData", "dummyData", "dummyData", "dummyData","dummyData", "dummyData","dummyData", "dummyData"]);
+interface TaskList {
+  tasks: Array<{}>,
+  status: string,
+  setStatus: (value: string | ((prevVar: string) => string)) => void,
+  setSearch: (value: string | ((prevVar: string) => string)) => void
+}
+
+function TaskList({tasks, status, setStatus, setSearch}: TaskList) {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [descriptionText, setDescriptionText] = useState("Input text");
 
@@ -21,13 +27,13 @@ function TaskList() {
   };
 
   return (
-    <div className="relative w-full lg:w-1/5 bg-gray-100 border-blue-100 border-2 h-full">
+    <div className="relative w-full lg:w-1/5 bg-gray-100 shadow-xl h-full">
       <div>
-        <SearchBar />
-        <Slider />
+        <SearchBar setSearch={setSearch}/>
+        <Slider status={status} setStatus={setStatus}/>
         <div className="bg-gray-150 mt-8 space-y-4 overflow-y-scroll max-h-[calc(100vh-18rem)]">
           {tasks.map((task, index) => (
-            <Task key={index} />
+            <Task key={index} task={task}/>
           ))}
         </div>
         <button
