@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import HomePage from '../home/page'
+import Home from '../page';
+
 
 function Login() {
+    const nav = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+
+    let logInOk = false;
 
     async function handleLogin(){
         // Your login logic here.
@@ -34,7 +42,8 @@ function Login() {
         const out = await res.json()
     
         if (!out.errorCode) {
-            alert("Logged in.");
+            nav('/home');
+            nav(0);
         }
         else if (out.errorCode == 50) {
             alert("Please verify your email before logging in.");
