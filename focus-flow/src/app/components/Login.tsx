@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 
 function Login() {
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -13,20 +13,21 @@ function Login() {
     async function handleLogin(){
         // Your login logic here.
         // For simplicity, we're just printing the entered email and password.
+        setLoading(true)
 
         if (!email && !password) {
             alert('Please enter your email and password.');
+            setLoading(false)
             return;
         } else if (!email) {
             alert('Please enter your email.');
+            setLoading(false)
             return;
         } else if (!password && email) {
             alert('Please enter your password.');
+            setLoading(false)
             return;
         }
-
-        console.log('Email:', email);
-        console.log('Password:', password);
 
         const res = await fetch('api/login', {
             method: 'POST',
@@ -41,22 +42,25 @@ function Login() {
         if (!out.errorCode) {
             console.log("Hello, World!")
             router.push("/home");
+            setLoading(false)
         }
         else if (out.errorCode == 50) {
             alert("Please verify your email before logging in.");
+            setLoading(false)
         }
         else if (out.errorCode == "auth/too-many-requests") {
             alert("Too many log in requests. Please try again in a moment.");
+            setLoading(false)
         }
         else if (out.errorCode == "auth/invalid-login-credentials") {
             alert("Incorrect password.");
+            setLoading(false)
         }
         else {
             console.log(out.errorCode);
             alert("Error: " + out.errorMesage);
+            setLoading(false)
         }
-
-
     };
 
     return (
@@ -99,7 +103,7 @@ function Login() {
                     }}
                     className="w-full bg-orange-300 text-white p-2 rounded-md hover:bg-blue-600 cursor-pointer"
                 >
-                    Login
+                    {loading ? "Loading" : "Login"}
                 </button>
             </div>
         </div>
