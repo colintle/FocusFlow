@@ -39,6 +39,7 @@ function Login() {
         const out = await res.json()
     
         if (!out.errorCode) {
+            console.log("Hello, World!")
             router.push("/home");
         }
         else if (out.errorCode == 50) {
@@ -54,6 +55,8 @@ function Login() {
             console.log(out.errorCode);
             alert("Error: " + out.errorMesage);
         }
+
+
     };
 
     return (

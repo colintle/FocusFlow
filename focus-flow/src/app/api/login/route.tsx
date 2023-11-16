@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
         name: 'User Cookie',
         value: id,
         httpOnly: true,
-        path: 'https://focusflow3.vercel.app/home' && 'http://localhost:3000/home' && 'https://focusflow3.vercel.app/' && 'http://localhost:3000/',
-        maxAge: 3600,
+        path: '/',
+        expires: new Date(Date.now() + 1000 * 60 * 60),
         secure: true
       });
       
