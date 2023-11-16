@@ -1,9 +1,7 @@
 "use client";
 import { useState } from 'react';
-import { BrowserRouter, Route, Routes, Link as link2 } from "react-router-dom";
 import Image from 'next/image';
 import Link from 'next/link';
-import { useNavigate } from 'react-router-dom';
 
 import logo from '../../public/logos/ffLogo_slogan.png';
 import landing from "../../public/landing/landing.png";
@@ -14,7 +12,6 @@ export default function Home() {
   const [isLoginActive, setIsLoginActive] = useState(false);
 
   return (
-    <BrowserRouter>
     <div className="flex flex-col md:flex-row h-screen">
       <div className="w-full md:w-1/2 flex flex-col py-4">
         <div className="px-8">
@@ -41,6 +38,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-    </BrowserRouter>
   );
 }

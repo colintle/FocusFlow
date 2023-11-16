@@ -1,7 +1,6 @@
 import React, { FormEvent, useState } from 'react';
 import { NextRequest } from 'next/server';
 
-
 function SignUp() {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
