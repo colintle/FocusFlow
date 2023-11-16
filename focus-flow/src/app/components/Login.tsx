@@ -1,6 +1,11 @@
+"use client";
+
 import React, { useState } from 'react';
+import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 
 function Login() {
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -34,7 +39,7 @@ function Login() {
         const out = await res.json()
     
         if (!out.errorCode) {
-            alert("Logged in.");
+            router.push("/home");
         }
         else if (out.errorCode == 50) {
             alert("Please verify your email before logging in.");
@@ -86,7 +91,9 @@ function Login() {
                     )}
                 </div>
                 <button
-                    onClick={handleLogin}
+                    onClick={async () => {
+                        await handleLogin();
+                    }}
                     className="w-full bg-orange-300 text-white p-2 rounded-md hover:bg-blue-600 cursor-pointer"
                 >
                     Login

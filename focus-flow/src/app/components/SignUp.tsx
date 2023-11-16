@@ -1,7 +1,11 @@
+"use client";
+
 import React, { FormEvent, useState } from 'react';
 import { NextRequest } from 'next/server';
+import { useRouter } from 'next/navigation';
 
 function SignUp() {
+    const router = useRouter();
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -43,7 +47,7 @@ function SignUp() {
 
         if (!out.errorCode) {
             console.log(out);
-            alert("Account created.");
+            router.push("/home");
         }
         else if(out.errorCode == "auth/weak-password") {
             alert("Your password needs to be at least 8 characters in length.");
