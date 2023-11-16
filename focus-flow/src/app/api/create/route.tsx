@@ -1,5 +1,5 @@
 import { db } from '@/app/firebase/firebase';
-import { setDoc, doc} from 'firebase/firestore';
+import { setDoc, doc, collection, addDoc} from 'firebase/firestore';
 import { NextResponse, NextRequest } from "next/server";
 import { cookies } from 'next/headers'
 
@@ -9,17 +9,17 @@ export async function POST(request: NextRequest) {
     const id = idCookie!.value;
 
     const data = await request.json() ;
-    const { title, description, due, status } = data;
+    const { title, description, date, status } = data;
     let errorCode = null;
     let errorMessage = null;
 
     try {
-        const taskRef = doc(db, 'users', id, 'tasks', title);
-        await setDoc(taskRef, {
+        const taskCollection = collection(db, 'users', id, 'tasks');
+        await addDoc(taskCollection, {
             title,
-            description, 
-            due, 
-            status
+            description,
+            date,
+            status,
             // Other properties can be added here
           });
 
