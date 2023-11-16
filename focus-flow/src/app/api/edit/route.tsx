@@ -9,16 +9,16 @@ export async function POST(request: NextRequest) {
     const id = idCookie!.value;
 
     const data = await request.json() ;
-    const { oldTitle, newTitle, description, due, status } = data;
+    const { taskid, title, description, date, status } = data;
     let errorCode = null;
     let errorMessage = null;
 
     try {
-        const taskRef = doc(db, 'users', id, 'tasks', oldTitle);
+        const taskRef = taskid;
         await updateDoc(taskRef, {
-            title: newTitle,
+            title: title,
             description: description,
-            due: due,
+            date: date,
             status: status
           });
 

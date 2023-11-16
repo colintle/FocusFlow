@@ -9,12 +9,12 @@ export async function POST(request: NextRequest) {
     const id = idCookie!.value;
 
     const data = await request.json() ;
-    const { title } = data;
+    const { taskid } = data;
     let errorCode = null;
     let errorMessage = null;
 
     try {
-        const taskRef = doc(db, 'users', id, 'tasks', title);
+        const taskRef = doc(db, 'users', id, 'tasks', taskid);
         await deleteDoc(taskRef);
 
         
