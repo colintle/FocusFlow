@@ -85,7 +85,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status, setStatus, setSearch
                   <input
                     type="text"
                     className="border p-1 w-40 border-gray-300 focus:outline-none focus:border-blue-500"
-                    placeholder="YYYY/MM/DD"
+                    placeholder="YYYY-MM-DD"
                     value={dueDateInput}
                     onChange={handleDueDateInputChange}
                   />
