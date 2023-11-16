@@ -1,5 +1,7 @@
 'use client';
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import Popup from './Popup';
 import { AiOutlinePlus } from 'react-icons/ai';
 import SearchBar from './SearchBar';
@@ -9,15 +11,18 @@ import image1 from '../../../public/images/circle-with-i-1.png';
 import image2 from '../../../public/images/Description image.png';
 
 interface TaskList {
-  tasks: Array<{}>,
-  status: string,
-  setStatus: (value: string | ((prevVar: string) => string)) => void,
-  setSearch: (value: string | ((prevVar: string) => string)) => void
+  tasks: Array<{}>;
+  status: string;
+  setStatus: (value: string | ((prevVar: string) => string)) => void;
+  setSearch: (value: string | ((prevVar: string) => string)) => void;
 }
 
-function TaskList({tasks, status, setStatus, setSearch}: TaskList) {
+function TaskList({ tasks, status, setStatus, setSearch }: TaskList) {
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [descriptionText, setDescriptionText] = useState("Input text");
+  const [descriptionText, setDescriptionText] = useState('Input text');
+  const [checklistItems, setChecklistItems] = useState(['Proident commodo', 'Minim laboris non']);
+  const [newChecklistItem, setNewChecklistItem] = useState('');
+  const [dueDate, setDueDate] = useState<Date | null>(null);
 
   const handleOpenPopup = () => {
     setPopupOpen(true);
@@ -27,24 +32,21 @@ function TaskList({tasks, status, setStatus, setSearch}: TaskList) {
     setPopupOpen(false);
   };
 
-  const [checklistItems, setChecklistItems] = useState(["Proident commodo", "Minim laboris non"]);
-  const [newChecklistItem, setNewChecklistItem] = useState("");
-
   const handleAddMore = () => {
-    if (newChecklistItem.trim() !== "") {
+    if (newChecklistItem.trim() !== '') {
       setChecklistItems([...checklistItems, newChecklistItem]);
-      setNewChecklistItem(""); // Clear the input field after adding the item
+      setNewChecklistItem('');
     }
   };
 
   return (
     <div className="relative w-full lg:w-1/5 bg-gray-100 shadow-xl h-full">
       <div>
-        <SearchBar setSearch={setSearch}/>
-        <Slider status={status} setStatus={setStatus}/>
+        <SearchBar setSearch={setSearch} />
+        <Slider status={status} setStatus={setStatus} />
         <div className="bg-gray-150 mt-8 space-y-4 overflow-y-scroll max-h-[calc(100vh-18rem)]">
           {tasks.map((task, index) => (
-            <Task key={index} task={task}/>
+            <Task key={index} task={task} />
           ))}
         </div>
         <button
@@ -57,16 +59,11 @@ function TaskList({tasks, status, setStatus, setSearch}: TaskList) {
       </div>
 
       {isPopupOpen && (
-        <Popup
-          title="Task title"
-          onClose={handleClosePopup}
-        >
+        <Popup title="Task title" onClose={handleClosePopup}>
           <div className="flex items-center">
-           
-          
             <div className="text-left ml-2 flex-grow">
               <p className="font-bold mb-4 mt-2">General Info</p>
-              <div className="flex">
+              <div className="flex items-center">
                 <div className="mr-4">
                   <select className="border p-1 w-32 border-gray-300 focus:outline-none focus:border-blue-500">
                     <option disabled selected hidden>Status</option>
@@ -84,10 +81,12 @@ function TaskList({tasks, status, setStatus, setSearch}: TaskList) {
                   </select>
                 </div>
                 <div>
-                  <select className="border p-1 w-40 border-gray-300 focus:outline-none focus:border-blue-500">
-                    <option disabled selected hidden>MM/DD/YYYY</option>
-                    {/* Add your options for Due Date here */}
-                  </select>
+                  <DatePicker
+                    selected={dueDate}
+                    onChange={(date: React.SetStateAction<Date | null>) => setDueDate(date)}
+                    className="border p-1 w-40 border-gray-300 focus:outline-none focus:border-blue-500"
+                    placeholderText="Select due date"
+                  />
                 </div>
               </div>
 
@@ -104,7 +103,7 @@ function TaskList({tasks, status, setStatus, setSearch}: TaskList) {
                 className="border p-2 w-full border-gray-300 focus:outline-none focus:border-blue-500"
                 value={descriptionText}
                 onChange={(e) => setDescriptionText(e.target.value)}
-                onClick={() => setDescriptionText("")} // Clear default text on click
+                onClick={() => setDescriptionText('')}
               />
 
               {/* Checklist Section */}
@@ -112,11 +111,7 @@ function TaskList({tasks, status, setStatus, setSearch}: TaskList) {
                 <p className="font-bold mb-4">Checklist</p>
                 {checklistItems.map((item, index) => (
                   <div key={index} className="flex items-center mb-2">
-                    <input
-                      type="checkbox"
-                      className="mr-2"
-                      // Add event handler if needed
-                    />
+                    <input type="checkbox" className="mr-2" />
                     <span>{item}</span>
                   </div>
                 ))}
