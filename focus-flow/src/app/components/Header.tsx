@@ -4,13 +4,11 @@ import {useState} from "react";
 import Image from 'next/image';
 import Popup from "./Popup";
 import { CiLogout } from "react-icons/ci";
-import { useRouter } from 'next/navigation';
 
 import logo from '../../../public/logos/ffLogo_slogan.png';
 
 const Header = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const router = useRouter();
 
   const handleClose = () => {
     setIsPopupOpen(false);
@@ -28,7 +26,7 @@ const Header = () => {
 
     if (!out.errorCode) {
         alert("Logged out!")
-        router.push("/");
+        window.location.reload()
         return
     }
   }
