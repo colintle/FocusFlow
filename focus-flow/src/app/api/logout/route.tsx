@@ -7,7 +7,6 @@ export async function GET(request: NextRequest) {
 
   try {
     cookies().delete("User Cookie");
-
     return NextResponse.redirect(new URL("/", request.url));
   } catch (error: any) {
     errorCode = error.code;

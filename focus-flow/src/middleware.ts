@@ -2,12 +2,11 @@
 import { NextResponse, NextRequest } from "next/server";
 import { db } from "./app/firebase/firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
-import { cookies } from "next/headers";
 
-// This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
   const id = request.cookies.get("User Cookie")?.value;
 
+  // Stops people from faking a cookie
   if (id) {
     const userCollection = collection(db, "users");
     const user = doc(userCollection, id);
@@ -16,8 +15,6 @@ export async function middleware(request: NextRequest) {
     if (userDoc.exists()) {
       console.log("Document data:", userDoc.data());
     } else {
-      // Document does not exist
-      
       return NextResponse.redirect(new URL("/api/logout", request.url));
     }
   }
