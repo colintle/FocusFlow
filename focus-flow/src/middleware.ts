@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
     if (userDoc.exists()) {
       console.log("Document data:", userDoc.data());
     } else {
-      return NextResponse.redirect(new URL("/api/signout", request.url));
+      return NextResponse.redirect(new URL("/api/logout", request.url));
     }
   }
 
