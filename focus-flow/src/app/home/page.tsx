@@ -10,75 +10,53 @@ import TaskList from "../components/TaskList"
 import Header from '../components/Header';
 import CalendarContainer from '../components/CalendarContainer';
 
-// To Do
-// Make fetch calls to get events
-
-// To Do (getServerProps)
-// Check for cookie before accessing this page
 function HomePage() {
-  let allTasks = [
-    {
-      title:"Test 1",
-      date: '2023-11-02',
-      status: 'To Do',
-      description: "asdfasdf"
-    }, 
-    {
-      title:"Test 2",
-      date: '2023-11-20',
-      status: 'To Do',
-      description: "asdfasdfasdfasdf"
-    }, 
-    {
-      title:"Test 3",
-      date: '2023-11-15',
-      status: 'In Progress',
-      description: "asdfasdf"
 
-    }, 
-    {
-      title:"Test 4",
-      date: '2023-11-30',
-      status: 'In Progress',
-      description: "asdfasdf"
-    },
-    {
-      title:"Test 3",
-      date: '2023-11-15',
-      status: 'In Progress',
-      description: "asdfasdf"
-
-    }, 
-    {
-      title:"Test 4",
-      date: '2023-11-30',
-      status: 'In Progress',
-      description: "asdfasdf"
-    },
-    
-    {
-      title:"Test 5",
-      date: '2023-11-19',
-      status: 'Completed',
-      description: "asdfasdfasdfas"
-    }
-  ]
-  
+  const [all, setAll] = useState<any>([])
   const [tasks, setTasks] = useState<any>([])
   const [status, setStatus] = useState("To Do")
   const [search, setSearch] = useState("")
 
-  console.log(search)
+  useEffect(() => {
+    if (all.length > 0) {
+      const filtered = all.filter((task:any) => task.status == status)
+      setTasks(filtered)
+    }
+  }, [status, all])
 
   useEffect(() => {
-    const filtered = allTasks.filter((task) => task.status == status)
-    setTasks(filtered)
-  }, [status])
+    fetchSearchResults()
+    .then(data => {
+      if (data?.matchingTasks?.length > 0){
+        setAll(data.matchingTasks)
+      }
+    })
+  }, [search])
 
-  // search function
-  async function SearchBar(){
+async function fetchSearchResults() {
+  try {
+    const endpoint = 'api/search';
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ searchQuery: search }),
+    };
 
+    const response = await fetch(endpoint, requestOptions);
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    let data = await response.json();
+    return data
+  } catch (error:any) {
+    console.error('Fetch error:', error.message);
+    return { error: error.message };
   }
+}
 
   return (
     <div className="container mx-auto h-screen px-2 bg-gray-100">

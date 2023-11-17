@@ -14,15 +14,13 @@ export async function POST(request: NextRequest) {
     let errorMessage = null;
 
     try {
-        const taskRef = taskid;
+        const taskRef = doc(db, 'users', id, 'tasks', taskid);
         await updateDoc(taskRef, {
             title: title,
             description: description,
             date: date,
             status: status
-          });
-
-        
+          });        
     } catch (error: any) {
         errorCode = error.code;
         errorMessage = error.message;

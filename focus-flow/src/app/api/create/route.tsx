@@ -20,7 +20,6 @@ export async function POST(request: NextRequest) {
             description,
             date,
             status,
-            // Other properties can be added here
           });
 
         

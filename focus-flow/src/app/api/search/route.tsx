@@ -16,13 +16,14 @@ export async function POST(request: NextRequest) {
   try {
       const tasksCollection = collection(db, 'users', userId, 'tasks');
       const q = query(tasksCollection, where('title', '>=', searchQuery));
-
       const querySnapshot = await getDocs(q);
 
-      const matchingTasks = querySnapshot.docs.map((doc) => ({
+      const matchingTasks = querySnapshot.docs
+      .map(doc => ({
         id: doc.id,
-        ...doc.data(),
-      }));
+        ...doc.data() as any
+      }))
+      .filter(task => (task.title.toLowerCase().includes(searchQuery.toLowerCase())));
 
       return NextResponse.json({ matchingTasks });
   } catch (error: any) {
