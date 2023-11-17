@@ -133,7 +133,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status, setStatus, setSearch
                     onChange={(e) => setNewChecklistItem(e.target.value)}
                   />
                   <button
-                    className="bg-orange-300 hover:bg-orange-400 text-white font-bold py-2 px-4"
+                    className="bg-orange-300 hover:bg-orange-400 text-black font-bold py-2 px-4"
                     onClick={handleAddMore}
                   >
                     Add More

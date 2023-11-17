@@ -17,7 +17,7 @@ function Popup({ title, children, onClose }: PopupProps) {
               <div className="bg-orange-300 px-4 pt-5 sm:p-6 flex justify-between items-center">
                 <h3
                   id="modal-title"
-                  className="text-lg font-medium leading-6 text-white underline"
+                  className="text-lg font-medium leading-6 text-black underline"
                 >
                   {title}
                 </h3>
