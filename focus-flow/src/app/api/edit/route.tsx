@@ -4,11 +4,11 @@ import { NextResponse, NextRequest } from "next/server";
 import { cookies } from 'next/headers'
 
 export async function POST(request: NextRequest) {
-    const cookieStore = cookies()
-    const idCookie = cookieStore.get('User Cookie')
+    const cookieStore = cookies();
+    const idCookie = cookieStore.get('User Cookie');
     const id = idCookie!.value;
 
-    const data = await request.json() ;
+    const data = await request.json();
     const { taskid, title, description, date, status } = data;
     let errorCode = null;
     let errorMessage = null;
