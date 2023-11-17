@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
 
   try {
     cookies().delete("User Cookie");
-    return NextResponse.json('Login Successful');  
+    return NextResponse.json('Logout Successful');  
   } catch (error: any) {
     errorCode = error.code;
     errorMessage = error.message;
