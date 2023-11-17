@@ -43,28 +43,23 @@ function Login() {
             alert("Successful Login!")
             router.push("/home");
             setLoading(false)
-            return
         }
         else if (out.errorCode == 50) {
             alert("Please verify your email before logging in.");
             setLoading(false)
-            return
         }
         else if (out.errorCode == "auth/too-many-requests") {
             alert("Too many log in requests. Please try again in a moment.");
             setLoading(false)
-            return
         }
         else if (out.errorCode == "auth/invalid-login-credentials") {
             alert("Incorrect password.");
             setLoading(false)
-            return
         }
         else {
             console.log(out.errorCode);
             alert("Error: " + out.errorMesage);
             setLoading(false)
-            return
         }
     };
 
