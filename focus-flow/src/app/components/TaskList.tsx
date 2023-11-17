@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import Popup from './Popup';
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -60,10 +61,20 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status, setStatus, setSearch
       </button>
 
       {isPopupOpen && (
-        <Popup title="Task title" onClose={handleClosePopup}>
+        <Popup title="Creating New Task" onClose={handleClosePopup}>
           <div className="flex items-center">
             <div className="text-left ml-2 flex-grow">
-              <p className="font-bold mb-4 mt-2">General Info</p>
+              <p className="font-bold mb-8">Enter Task title:</p>
+              <input
+                type="text"
+                className="border p-2 w-full border-gray-300 focus:outline-none focus:border-blue-500"
+                value={descriptionText}
+                onChange={(e) => setDescriptionText(e.target.value)}
+                onClick={() => setDescriptionText('')}
+                placeholder="Do hw by next week..."
+              />
+
+              <p className="font-bold mb-4 mt-4">General Info:</p>
               <div className="flex items-center">
                 <div className="mr-4">
                   <select className="border p-1 w-32 border-gray-300 focus:outline-none focus:border-blue-500">
@@ -94,7 +105,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status, setStatus, setSearch
 
               <p className="font-bold mb-8 mt-8 flex items-center">
                 <img src={image2.src} alt="Description" className="mr-4 w-5 h-5 rounded-full mb-0" />
-                Description
+                Description:
               </p>
               <input
                 type="text"
@@ -102,10 +113,11 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status, setStatus, setSearch
                 value={descriptionText}
                 onChange={(e) => setDescriptionText(e.target.value)}
                 onClick={() => setDescriptionText('')}
+                placeholder="Task description..."
               />
 
               <div className="mt-8">
-                <p className="font-bold mb-4">Checklist</p>
+                <p className="font-bold mb-4">Checklist:</p>
                 {checklistItems.map((item, index) => (
                   <div key={index} className="flex items-center mb-2">
                     <input type="checkbox" className="mr-2" />
