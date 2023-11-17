@@ -4,7 +4,7 @@ import React, {useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 function SignUp() {
-    const router = useRouter();
+    const [loading, setLoading] = useState(false)
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,23 +13,20 @@ function SignUp() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     async function handleSignUp(){
-
+        setLoading(true)
         if (!fullName || !email || !password || !confirmPassword) {
             alert('Please enter all the fields to register an account.');
+            setLoading(false)
             return;
         }
 
         if (password != confirmPassword) {
             alert('The password fields do not match.');
+            setLoading(false)
             return;
         }
 
         const namePieces = fullName.split(' ');
-
-        console.log('Full Name:', fullName);
-        console.log('Email:', email);
-        console.log('Password:', password);
-        console.log('Confirm Password:', confirmPassword);
 
         const firstName = namePieces[0];
         const lastName = namePieces[1];
@@ -46,15 +43,23 @@ function SignUp() {
 
         if (!out.errorCode) {
             alert("Success! Please login in!")
+            setLoading(false)
+            return
         }
         else if(out.errorCode == "auth/weak-password") {
             alert("Your password needs to be at least 8 characters in length.");
+            setLoading(false)
+            return
         }
         else if(out.errorCode == "auth/email-already-in-use") {
             alert("Account with email '" + email + "' already exists. Please sign in.");
+            setLoading(false)
+            return
         }
         else {
             alert("Error: " + out.errorMessage);
+            setLoading(false)
+            return
         }
     };
 
@@ -126,7 +131,7 @@ function SignUp() {
                     onClick={handleSignUp}
                     className="w-full bg-orange-300 text-white p-2 rounded-md hover:bg-blue-600 cursor-pointer"
                 >
-                    Sign Up
+                    {loading ? "Loading" : "Sign Up"}
                 </button>
             </div>
         </div>
