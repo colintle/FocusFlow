@@ -18,6 +18,7 @@ function CalendarContainer({tasks}: CalendarContainer) {
 
     function closePopUp(){
         setIsPopUp(false)
+        return
     }
 
     function formatDate(dateString:string) {
@@ -43,6 +44,7 @@ function CalendarContainer({tasks}: CalendarContainer) {
         }
         setSelectedTask(eventObject)
         setIsPopUp(true)
+        return
     }
     return (
         <div className="h-full w-full hidden lg:block lg:w-3/4 shadow-xl">
