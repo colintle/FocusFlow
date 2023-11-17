@@ -5,11 +5,9 @@ import { collection, doc, getDoc } from "firebase/firestore";
 export async function GET(request: NextRequest) {
     let errorCode = null;
     let errorMessage = null;
+    const id = request.cookies.get("User Cookie")?.value;
 
     try{
-        const id = request.cookies.get("User Cookie")?.value;
-        console.log(id)
-
         const userCollection = collection(db, "users");
         const user = doc(userCollection, id);
         const userDoc = await getDoc(user);
@@ -24,7 +22,7 @@ export async function GET(request: NextRequest) {
         console.log(error)
         errorCode = error.code;
         errorMessage = error.message;
-        return NextResponse.json({ errorCode, errorMessage });
+        return NextResponse.json({ error, id });
     }
     return
   }
