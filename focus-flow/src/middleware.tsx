@@ -1,22 +1,11 @@
-
-import { db } from "./app/firebase/firebase";
 import { NextResponse, NextRequest } from "next/server";
-import { collection, doc, getDoc } from "firebase/firestore";
 
 export async function middleware(request: NextRequest) {
   const id = request.cookies.get("User Cookie")?.value;
 
   //Stops people from faking a cookie
   if (id) {
-    const userCollection = collection(db, "users");
-    const user = doc(userCollection, id);
-    const userDoc = await getDoc(user);
-
-    if (userDoc.exists()) {
-      console.log("Document data:", userDoc.data());
-    } else {
-      return NextResponse.redirect(new URL("/api/signout", request.url));
-    }
+    return NextResponse.redirect(new URL("/api/verify", request.url));
   }
 
   // Logged in
