@@ -1,24 +1,23 @@
+
+import { db } from "./app/firebase/firebase";
 import { NextResponse, NextRequest } from "next/server";
+import { collection, doc, getDoc } from "firebase/firestore";
 
 export async function middleware(request: NextRequest) {
   const id = request.cookies.get("User Cookie")?.value;
 
-  // Stops people from faking a cookie
-  // if (id) {
-  //   const firebase = await import("./app/firebase/firebase");
-  //   const db = firebase.db;
-  //   const { collection, doc, getDoc } = await import("firebase/firestore");
+  //Stops people from faking a cookie
+  if (id) {
+    const userCollection = collection(db, "users");
+    const user = doc(userCollection, id);
+    const userDoc = await getDoc(user);
 
-  //   const userCollection = collection(db, "users");
-  //   const user = doc(userCollection, id);
-  //   const userDoc = await getDoc(user);
-
-  //   if (userDoc.exists()) {
-  //     console.log("Document data:", userDoc.data());
-  //   } else {
-  //     return NextResponse.redirect(new URL("/api/logout", request.url));
-  //   }
-  // }
+    if (userDoc.exists()) {
+      console.log("Document data:", userDoc.data());
+    } else {
+      return NextResponse.redirect(new URL("/api/signout", request.url));
+    }
+  }
 
   // Logged in
   if (request.nextUrl.pathname === "/" && id != null) {
