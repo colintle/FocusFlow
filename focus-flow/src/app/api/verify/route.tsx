@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
 
     try{
         const id = request.cookies.get("User Cookie")?.value;
+        console.log(id)
 
         const userCollection = collection(db, "users");
         const user = doc(userCollection, id);
@@ -20,6 +21,7 @@ export async function GET(request: NextRequest) {
         }
     }
     catch(error: any){
+        console.log(error)
         errorCode = error.code;
         errorMessage = error.message;
         return NextResponse.json({ errorCode, errorMessage });
