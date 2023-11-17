@@ -17,6 +17,7 @@ interface TaskListProps {
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, status, setStatus, setSearch }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [taskTitle, setTaskTitle] = useState(''); // Separate state for task title
   const [descriptionText, setDescriptionText] = useState('Input text');
   const [checklistItems, setChecklistItems] = useState<string[]>(['Proident commodo', 'Minim laboris non']);
   const [newChecklistItem, setNewChecklistItem] = useState('');
@@ -68,9 +69,9 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status, setStatus, setSearch
               <input
                 type="text"
                 className="border p-2 w-full border-gray-300 focus:outline-none focus:border-blue-500"
-                value={descriptionText}
-                onChange={(e) => setDescriptionText(e.target.value)}
-                onClick={() => setDescriptionText('')}
+                value={taskTitle}
+                onChange={(e) => setTaskTitle(e.target.value)}
+                onClick={() => setTaskTitle('')}
                 placeholder="Do hw by next week..."
               />
 
