@@ -13,46 +13,46 @@ function HomePage() {
   const [status, setStatus] = useState("To Do")
   const [search, setSearch] = useState("")
 
-//   useEffect(() => {
-//     if (all.length > 0) {
-//       const filtered = all.filter((task:any) => task.status == status)
-//       setTasks(filtered)
-//     }
-//   }, [status, all])
+  useEffect(() => {
+    if (all.length > 0) {
+      const filtered = all.filter((task:any) => task.status == status)
+      setTasks(filtered)
+    }
+  }, [status, all])
 
-//   useEffect(() => {
-//     fetchSearchResults()
-//     .then(data => {
-//       if (data?.matchingTasks?.length > 0){
-//         setAll(data.matchingTasks)
-//       }
-//     })
-//   }, [])
+  useEffect(() => {
+    fetchSearchResults()
+    .then(data => {
+      if (data?.matchingTasks?.length > 0){
+        setAll(data.matchingTasks)
+      }
+    })
+  })
 
-// async function fetchSearchResults() {
-//   try {
-//     const endpoint = 'api/search';
-//     const requestOptions = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ searchQuery: search }),
-//     };
+async function fetchSearchResults() {
+  try {
+    const endpoint = 'api/search';
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ searchQuery: search }),
+    };
 
-//     const response = await fetch(endpoint, requestOptions);
+    const response = await fetch(endpoint, requestOptions);
 
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok');
-//     }
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
 
-//     let data = await response.json();
-//     return data
-//   } catch (error:any) {
-//     console.error('Fetch error:', error.message);
-//     return { error: error.message };
-//   }
-// }
+    let data = await response.json();
+    return data
+  } catch (error:any) {
+    console.error('Fetch error:', error.message);
+    return { error: error.message };
+  }
+}
 
   return (
     <div className="container mx-auto h-screen px-2 bg-gray-100">
