@@ -31,7 +31,7 @@ function HomePage() {
         setAll(data.matchingTasks)
       }
     })
-  }, [search])
+  })
 
 async function fetchSearchResults() {
   try {
