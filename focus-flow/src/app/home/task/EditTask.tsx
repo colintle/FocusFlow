@@ -58,6 +58,7 @@ function EditTask({task}: EditTask) {
 
         if (!out.errorCode) {
             alert("Success!")
+            window.location.reload()
             return
         }
         else{

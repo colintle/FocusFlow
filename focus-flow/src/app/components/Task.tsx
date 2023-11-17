@@ -28,6 +28,7 @@ function Task({task}: Task) {
 
         if (!out.errorCode) {
             alert("Success!")
+            window.location.reload()
             return
         }
         else{
