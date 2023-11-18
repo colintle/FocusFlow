@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
     
         if (userDoc.exists()) {
           console.log("Document data:", userDoc.data());
+          return NextResponse.redirect(new URL("/home", request.url));
         } else {
           return NextResponse.redirect(new URL("/api/signout", request.url));
         }
@@ -24,5 +25,4 @@ export async function GET(request: NextRequest) {
         errorMessage = error.message;
         return NextResponse.json({ error, id });
     }
-    return
   }

@@ -1,10 +1,12 @@
 import { NextResponse, NextRequest } from "next/server";
+let counter = 0;
 
 export async function middleware(request: NextRequest) {
   const id = request.cookies.get("User Cookie")?.value;
 
   //Stops people from faking a cookie
-  if (id) {
+  if (id && counter < 2) {
+    counter++;
     return NextResponse.redirect(new URL("/api/verify", request.url));
   }
 
