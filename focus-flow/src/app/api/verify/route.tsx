@@ -1,11 +1,14 @@
 import { NextResponse, NextRequest } from "next/server";
 import { db } from "@/app/firebase/firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
+import { cookies } from "next/headers";
 
 export async function GET(request: NextRequest) {
     let errorCode = null;
     let errorMessage = null;
-    const id = request.cookies.get("User Cookie")?.value;
+    const cookieStore = cookies();
+    const idCookie = cookieStore.get('User Cookie');
+    const id = idCookie!.value;
 
     try{
         const userCollection = collection(db, "users");
